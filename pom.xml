@@ -11,9 +11,10 @@
 	<groupId>com.cryptochain</groupId>
 	<artifactId>movies</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>movies</name>
 	<description>Project for movies on the blockchain </description>
 	<properties>
-		<java.version>8</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
