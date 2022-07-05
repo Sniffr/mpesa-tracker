@@ -71,6 +71,7 @@ public class MoneyRequestService {
             if (recepient == null) {
                 recepient = Recepient.builder()
                         .name(result.get("recipient"))
+                        .totalSpent(0L)
                         .build();
             }
             //since recipient is not null,we change its totalSpent to include the amount of the transaction
@@ -82,9 +83,9 @@ public class MoneyRequestService {
                     .transactionId(result.get("transactionId"))
                     .recepient(recepient)
                     .build();
-
-            transactionRepository.save(transaction);
             recepientRepository.save(recepient);
+            transactionRepository.save(transaction);
+
         } else {
             System.out.println("Invalid request");
         }
