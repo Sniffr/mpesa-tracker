@@ -100,4 +100,8 @@ public class MoneyRequestService {
     public List<Recepient> getAllRecepients() {
         return recepientRepository.findAll();
     }
+
+    public Recepient modifyRecepient(Recepient recepient) {
+        return recepientRepository.save(recepient);
+    }
 }

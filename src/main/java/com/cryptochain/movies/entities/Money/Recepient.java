@@ -1,5 +1,6 @@
 package com.cryptochain.movies.entities.Money;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -11,10 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 public class Recepient {
     String name;
-    String description;
+    @ManyToOne
+    @JoinColumn(name = "description_id")
+    @JsonBackReference
+    Description description;
     @OneToMany(mappedBy = "recepient")
     @JsonManagedReference
     private List<Transaction> transactions;
@@ -23,4 +26,15 @@ public class Recepient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
+
+    @Override
+    public String toString() {
+        return "Recepient{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", transactions=" + transactions +
+                ", totalSpent=" + totalSpent +
+                ", id=" + id +
+                '}';
+    }
 }

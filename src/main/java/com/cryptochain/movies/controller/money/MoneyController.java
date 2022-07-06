@@ -49,4 +49,16 @@ public class MoneyController {
 
         }
     }
+    //modify sender  to add description
+    @PostMapping("/money/sender/")
+    public Recepient modifyRecepient(@RequestBody Recepient recepient) {
+        try {
+            return moneyRequestService.modifyRecepient(recepient);
+        } catch (Exception e) {
+            log.error("Error getting all sender requests", e);
+            //throw new RuntimeException() with message "Error getting all sender requests"
+            throw new RuntimeException("Error getting all sender requests");
+
+        }
+    }
 }
