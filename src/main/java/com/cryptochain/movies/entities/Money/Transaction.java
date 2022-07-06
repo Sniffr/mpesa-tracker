@@ -1,6 +1,7 @@
 package com.cryptochain.movies.entities.Money;
 //add anotations belongng to a jpa entity
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Transaction {
     String transactionId;
     @ManyToOne
     @JoinColumn(name = "recepient_id")
+    @JsonBackReference
     Recepient recepient;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,5 +1,6 @@
 package com.cryptochain.movies.entities.Money;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ public class Recepient {
     String name;
     String description;
     @OneToMany(mappedBy = "recepient")
+    @JsonManagedReference
     private List<Transaction> transactions;
 
     Long totalSpent;
