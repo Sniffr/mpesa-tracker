@@ -16,6 +16,7 @@ import javax.persistence.*;
 public class Transaction {
     String amount;
     String recipient;
+    @Column(unique = true)
     String transactionId;
     @ManyToOne
     @JoinColumn(name = "recepient_id")
