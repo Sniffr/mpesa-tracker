@@ -1,12 +1,10 @@
 package com.cryptochain.movies.controller.money;
-
 import com.cryptochain.movies.entities.Money.Recepient;
 import com.cryptochain.movies.entities.Money.Transaction;
 import com.cryptochain.movies.service.money.MoneyRequestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
