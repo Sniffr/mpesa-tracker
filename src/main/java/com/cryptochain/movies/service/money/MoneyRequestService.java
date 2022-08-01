@@ -63,7 +63,7 @@ public class MoneyRequestService {
     }
 
     //main function for saving transactions
-    public void processMoneyRequest(String request) {
+    public Transaction processMoneyRequest(String request) {
         if (requestDesirialize(request)) {
             Map<String, String> result = extractMoneyRequest(request);
             System.out.println(result);
@@ -86,10 +86,11 @@ public class MoneyRequestService {
                     .build();
             recepientRepository.save(recepient);
             transactionRepository.save(transaction);
-
+            return transaction;
         } else {
             System.out.println("Invalid request");
         }
+        return null;
     }
 
 
@@ -104,4 +105,17 @@ public class MoneyRequestService {
     public Recepient modifyRecepient(Recepient recepient) {
         return recepientRepository.save(recepient);
     }
+
+    //get all recipients with null description
+    public List<Recepient> getAllRecepientsWithNullDescription() {
+        return recepientRepository.findAllByDescriptionIsNull();
+    }
+
+    //edit existing recipient
+    public Recepient editRecepient(Recepient recepient) {
+        return recepientRepository.save(recepient);
+    }
+
+
+
 }

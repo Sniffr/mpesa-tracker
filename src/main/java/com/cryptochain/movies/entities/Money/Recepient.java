@@ -14,10 +14,8 @@ import java.util.List;
 @Builder
 public class Recepient {
     String name;
-    @ManyToOne
-    @JoinColumn(name = "description_id")
-    @JsonBackReference
-    Description description;
+
+    String description;
     @OneToMany(mappedBy = "recepient")
     @JsonManagedReference
     private List<Transaction> transactions;

@@ -18,8 +18,8 @@ public class MoneyController {
     @PostMapping("/money")
     public String MoneyRequest(@RequestBody String request) {
         try {
-            moneyRequestService.processMoneyRequest(request);
-            return "Transaction Saved Successfully";
+            return moneyRequestService.processMoneyRequest(request).toString();
+
         } catch (Exception e) {
             log.error("Error saving money requests", e);
             throw new RuntimeException("Error saving request");
@@ -61,4 +61,18 @@ public class MoneyController {
 
         }
     }
+
+    //controller to get all null description recepients
+    @GetMapping("/money/senders/null")
+    public List<Recepient> getAllNullDescriptionRecepients() {
+        try {
+            return moneyRequestService.getAllRecepientsWithNullDescription();
+        } catch (Exception e) {
+            log.error("Error getting all null description recepients", e);
+            //throw new RuntimeException() with message "Error getting all null description recepients"
+            throw new RuntimeException("Error getting all null description recepients");
+
+        }
+    }
+    //post mapp
 }
