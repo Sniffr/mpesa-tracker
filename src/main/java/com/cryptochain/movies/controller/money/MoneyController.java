@@ -16,9 +16,9 @@ public class MoneyController {
     MoneyRequestService moneyRequestService;
 
     @PostMapping("/money")
-    public String MoneyRequest(@RequestBody String request) {
+    public Transaction MoneyRequest(@RequestBody String request) {
         try {
-            return moneyRequestService.processMoneyRequest(request).toString();
+            return moneyRequestService.processMoneyRequest(request);
 
         } catch (Exception e) {
             log.error("Error saving money requests", e);
